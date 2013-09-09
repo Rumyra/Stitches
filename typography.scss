@@ -1,0 +1,63 @@
+
+/*The following are taken from @BPScott - https://github.com/BPScott/bpscott.github.io*/
+
+//setting defaults - change them here to change style/vertical rhythm of design
+$base-font-size: 16px !default;
+$base-line-height: 1.5 !default;
+$ratio: 1.61803398875 !default; // Golden Ratio
+$round-pixels: true !default;
+//call this when setting font-size
+@function modular-scale($offset, $base-font-size: $base-font-size, $ratio: $ratio, $round-pixels: $round-pixels) {
+  @if $round-pixels == true {
+    @return round($base-font-size * pow($ratio, $offset));
+  }
+
+  @return $base-font-size * pow($ratio, $offset);
+}
+//call this when setting line-height
+@function rhythm($multiplier: 1, $base-font-size: $base-font-size, $base-line-heigh: $base-line-height) {
+  @return $multiplier * $base-font-size * $base-line-height;
+}
+//Use this as thus
+//element {
+//  @include rem('font-size', modular-scale(3));
+//  line-height: (rhythm(3) / modular-scale(3));
+//}
+
+@mixin text-shadow($font-colour: $black, $is-dark: true) {
+  color:$font-colour;
+  if $is-dark == true {
+    text-shadow:1px 1px 0px white;
+  } else {
+    text-shadow:1px 1px 1px black;
+  }
+}
+
+/*The following is taken from Bourbon: https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_font-face.scss*/
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal, $asset-pipeline: false ) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    @if $asset-pipeline == true {
+      src: font-url('#{$file-path}.eot');
+      src: font-url('#{$file-path}.eot?#iefix')          format('embedded-opentype'),
+           font-url('#{$file-path}.woff')                format('woff'),
+           font-url('#{$file-path}.ttf')                 format('truetype'),
+           font-url('#{$file-path}.svg##{$font-family}') format('svg');
+    } @else {
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix')               format('embedded-opentype'),
+           url('#{$file-path}.woff')                     format('woff'),
+           url('#{$file-path}.ttf')                      format('truetype'),
+           url('#{$file-path}.svg##{$font-family}')      format('svg');
+    }
+  }
+}
+
+@mixin word-wrap {
+	white-space:pre;
+	white-space:pre-wrap;
+	word-wrap:break-word;
+}
