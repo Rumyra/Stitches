@@ -8,6 +8,14 @@
 
 */
 
+//vendor prefixing
+@mixin simple-vendor-prefix($name, $argument) {
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+  -o-#{$name}: $argument;
+  #{$name}: $argument;
+}
 
 /*The following are taken from @BPScott - https://github.com/BPScott/bpscott.github.io*/
 /**

@@ -24,9 +24,9 @@ $round-pixels: true !default;
 //  line-height: (rhythm(3) / modular-scale(3));
 //}
 
-@mixin text-shadow($font-colour: $black, $is-dark: true) {
+@mixin text-style($font-colour: $black, $font-is-dark: true) {
   color:$font-colour;
-  if $is-dark == true {
+  if $font-is-dark == true {
     text-shadow:1px 1px 0px white;
   } else {
     text-shadow:1px 1px 1px black;
