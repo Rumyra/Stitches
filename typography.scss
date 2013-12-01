@@ -2,7 +2,7 @@
 /*The following are taken from @BPScott - https://github.com/BPScott/bpscott.github.io*/
 
 //setting defaults - change them here to change style/vertical rhythm of design
-$base-font-size: 16px !default;
+$base-font-size: 1px !default;
 $base-line-height: 1.5 !default;
 $ratio: 1.61803398875 !default; // Golden Ratio
 $round-pixels: true !default;
@@ -24,11 +24,13 @@ $round-pixels: true !default;
 //  line-height: (rhythm(3) / modular-scale(3));
 //}
 
+@mixin set-font() {}
+
 @mixin text-style($font-colour: $black, $font-is-dark: true) {
   color:$font-colour;
-  if $font-is-dark == true {
+  @if $font-is-dark == true {
     text-shadow:1px 1px 0px white;
-  } else {
+  } @else {
     text-shadow:1px 1px 1px black;
   }
 }

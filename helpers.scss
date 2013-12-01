@@ -36,3 +36,9 @@
   #{$property}: $px-values;
   #{$property}: $rem-values;
 }
+
+@mixin clear() {
+  margin:0px; padding:0px;
+  border:none; outline:none;
+  list-style:none;
+}
