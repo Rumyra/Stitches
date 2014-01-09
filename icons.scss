@@ -1,0 +1,39 @@
+@mixin add-icon($iconContent:'x', $before:true, $iconColour:white, $iconSize:20px, $iconFontFamily:'Font Awesome') {
+  @if $before == true {
+    &:before {
+      display: inline-block;
+      font-family: $iconFontFamily;
+      content: $iconContent;
+      font-size: $iconSize;
+      line-height: $iconSize+5;
+      color: $iconColour;
+      padding-right: $iconSize/2;
+    }
+  } @else {
+    &:after {
+      display: inline-block;
+      font-family: $iconFontFamily;
+      content: $iconContent;
+      font-size: $iconSize;
+      line-height: $iconSize+5;
+      color: $iconColour;
+      padding-left: $iconSize/2;
+    }
+  }
+}
+
+
+@mixin make-icon($iconContent:'x', $iconColour:dimgrey, $iconSize:30px, $iconFontFamily:'Font Awesome', $before:true) {
+  background:none; border:none; box-shadow:none;
+  padding:0px; margin:0px;
+  color:transparent; font-size:0px;
+  text-transform:none; text-decoration:none;
+  @include add-icon($iconContent, $before, $iconColour, $iconSize, $iconFontFamily);
+  &:before {padding:0px;}
+  &:hover {
+    background:none; border:none;
+    &:before {
+      color: darken($iconColour,10%);
+    }
+  }
+}

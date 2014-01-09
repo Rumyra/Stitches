@@ -42,3 +42,16 @@
   border:none; outline:none;
   list-style:none;
 }
+
+/*The following are taken from Brandon Mathis - http://codepen.io/imathis/pen/BDzcI*/
+@mixin at-least($device-width) {
+  @media screen and (min-width: $device-width) {
+    @content 
+  }
+}
+
+@mixin until($device-width) {
+  @media screen and (max-width: $device-width - 1) {
+    @content 
+  }
+}
