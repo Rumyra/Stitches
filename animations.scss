@@ -1,0 +1,42 @@
+//add animation to elements
+// @include simple-vendor-prefix(animation,
+//     animation-name(name [default:none])
+//     animation-duration(Xs | Xms [default:0s])
+//     animation-timing-function(ease | ease-in | ease-out | ease-in-out | linear | cubic-bezier(x1,y1,x2,y2) | step-start | step-end | steps(X start|end) [default:ease])
+//     animation-delay(Xs | Xms [default:0s])
+//     animation-iteration-count(X | infinite [default:1])
+//     animation-direction(normal | reverse | alternate | alternate-reverse [default:normal])
+//     animation-fill-mode(none | forwards | backwards | both [default:none])
+//     animation-play-state(running | paused [default:running])
+//     )
+
+//Just like this:
+// @include simple-vendor-prefix(animation, fadeIn 2s ease-in 0s 1 normal forwards running);
+
+//mixin to create keyframes for animation
+@mixin keyframes( $animationName )
+{
+  @-webkit-keyframes $animationName {
+      @content;
+  }
+  @-moz-keyframes $animationName {
+      @content;
+  }
+  @-o-keyframes $animationName {
+      @content;
+  }
+  @keyframes $animationName {
+      @content;
+  }
+}
+
+//animation library
+@include keyframes(fadeIn) {
+  0% {opacity:0}
+  100% {opacity:1}
+}
+
+@include keyframes(fadeOut) {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}

@@ -26,7 +26,7 @@ $round-pixels: true !default;
 
 @mixin set-font() {}
 
-@mixin text-style($font-colour: $black, $font-is-dark: true) {
+@mixin text-style($font-colour, $font-is-dark: true) {
   color:$font-colour;
   @if $font-is-dark == true {
     text-shadow:1px 1px 0px white;
@@ -56,6 +56,21 @@ $round-pixels: true !default;
            url('#{$file-path}.otf')                     format('opentype'),
            url('#{$file-path}.ttf')                      format('truetype'),
            url('#{$file-path}.svg##{$font-family}')      format('svg');
+    }
+  }
+}
+
+// For one filetype
+@mixin single-font-face($font-family, $file-path, $format, $weight: normal, $style: normal, $asset-pipeline: false) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    @if $asset-pipeline == true {
+      src: font-url('#{$file-path}.otf') format('#{$format}');
+    } @else {
+      src: url('#{$file-path}.otf') format('#{$format}');
     }
   }
 }

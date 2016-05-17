@@ -1,6 +1,0 @@
-//produces a double border on a block element
-@mixin double-border($innerBorderColor:gray, $gapColour:white, $outerBorderColor:lightgray, $innerBorderWidth:2px, $gapWidth:2px, $outerBorderWidth:2px) {
-	margin: $gapWidth+$outerBorderWidth;
-  border: $innerBorderWidth solid $innerBorderColor;
-  box-shadow: 0px 0px 0px $gapWidth $gapColour, 0px 0px 0px $gapWidth+$outerBorderWidth $outerBorderColor;
-}
